@@ -85,6 +85,9 @@ const SignUp = () => {
       const data = await response.json();
 
       if (response.ok && data.status) {
+        // Store the userId in sessionStorage before navigating
+        sessionStorage.setItem('userId', data.userdata._id);
+        
         navigate("/verify-email", {
           state: {
             email: formData.email,
